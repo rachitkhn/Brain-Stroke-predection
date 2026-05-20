@@ -1,85 +1,143 @@
-Brain Stroke Prediction Model
-Overview
+# 🧠 Brain Stroke Prediction Model
 
-Stroke is a critical medical condition that occurs when blood flow to the brain is interrupted due to a blocked or ruptured blood vessel, leading to reduced oxygen supply and potential brain damage. Early detection and timely medical intervention significantly increase survival rates and reduce long-term health complications.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?style=flat-square&logo=jupyter)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-green?style=flat-square&logo=scikit-learn)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
 
-This project focuses on building a machine learning–based predictive model to identify individuals at risk of stroke using demographic and health-related data. The objective is to support early risk assessment and assist healthcare professionals in making data-driven decisions.
+> A machine learning classification model that predicts stroke risk in patients using demographic and clinical health indicators — achieving ~95% accuracy.
 
-Objectives
+---
 
-Analyse health and lifestyle data to identify stroke risk factors
+## 📌 Project Overview
 
-Develop a predictive classification model for early stroke detection
+Stroke is a life-threatening neurological condition caused by a disruption of blood supply to the brain. Early identification of at-risk individuals can significantly improve clinical outcomes and reduce long-term disability.
 
-Evaluate model performance using standard ML metrics
+This project develops a supervised machine learning pipeline to classify patients as stroke-prone or not, based on anonymised health records. The goal is to support healthcare professionals with a data-driven risk assessment tool that integrates seamlessly into clinical decision support systems.
 
-Demonstrate the potential integration of predictive analytics into clinical decision support systems
+---
 
-Dataset
+## 🎯 Objectives
 
-The dataset consists of anonymized patient health records containing attributes such as:
+- Analyse demographic and lifestyle data to uncover key stroke risk factors
+- Build and evaluate multiple classification models for early stroke detection
+- Select the best-performing model based on rigorous evaluation metrics
+- Demonstrate the viability of predictive analytics in clinical settings
 
-Age
+---
 
-Gender
+## 📂 Repository Structure
 
-Hypertension
+```
+Brain-Stroke-predection/
+│
+├── Brain_Stroke.ipynb      # Full ML pipeline: EDA → preprocessing → modelling → evaluation
+├── Stroke_data.csv         # Anonymised patient health records dataset
+└── README.md
+```
 
-Heart Disease
+---
 
-BMI
+## 📊 Dataset
 
-Smoking Status
+The dataset contains anonymised patient health records with the following features:
 
-Average Glucose Level
+| Feature | Description |
+|---|---|
+| `age` | Patient age |
+| `gender` | Male / Female / Other |
+| `hypertension` | 0 = No, 1 = Yes |
+| `heart_disease` | 0 = No, 1 = Yes |
+| `avg_glucose_level` | Average blood glucose level |
+| `bmi` | Body Mass Index |
+| `smoking_status` | Never smoked / Formerly smoked / Smokes |
+| `work_type` | Employment category |
+| `Residence_type` | Urban / Rural |
+| `stroke` | **Target variable** — 0 = No Stroke, 1 = Stroke |
 
-Work Type
+---
 
-Residence Type
+## 🔬 Methodology
 
-(Dataset size: mention number of rows here if you know it)
+### 1. Data Preprocessing
+- Handled missing values (notably in `bmi`)
+- Encoded categorical variables using label encoding and one-hot encoding
+- Applied feature scaling and normalisation for distance-based algorithms
 
-Methodology
-1. Data Preprocessing
+### 2. Exploratory Data Analysis (EDA)
+- Visualised feature distributions and class imbalance
+- Analysed correlations between lifestyle factors (e.g. smoking, hypertension) and stroke incidence
+- Generated heatmaps, count plots, and box plots to guide feature selection
 
-Handling missing values
+### 3. Model Development
 
-Encoding categorical variables
+The following classification algorithms were trained and benchmarked:
 
-Feature scaling and normalization
+| Model | Notes |
+|---|---|
+| Logistic Regression | Baseline linear classifier |
+| Decision Tree | Interpretable rule-based model |
+| Random Forest | Ensemble method; robust to overfitting |
+| Support Vector Machine (SVM) | Effective in high-dimensional spaces |
 
-Exploratory Data Analysis (EDA)
+### 4. Evaluation
 
-2. Model Development
+Models were evaluated using:
+- **Accuracy** — overall correctness
+- **Precision & Recall** — especially important given class imbalance
+- **F1 Score** — harmonic mean of precision and recall
+- **Confusion Matrix** — breakdown of true/false positives and negatives
 
-Multiple classification algorithms were evaluated, including:
+---
 
-Logistic Regression
+## 📈 Results
 
-Random Forest
+| Metric | Score |
+|---|---|
+| **Best Model Accuracy** | ~95% |
+| Key Risk Indicators | Age, Hypertension, Avg Glucose Level, BMI |
 
-Decision Tree
+The final model demonstrated strong predictive performance across validation datasets and improved identification of high-risk individuals.
 
-Support Vector Machine
+---
 
-The final model was selected based on performance and generalization capability.
+## 🛠️ Technologies Used
 
-3. Evaluation Metrics
+- **Language:** Python 3
+- **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
+- **Environment:** Jupyter Notebook
 
-Accuracy
+---
 
-Precision
+## 🚀 Getting Started
 
-Recall
+```bash
+# Clone the repository
+git clone https://github.com/rachitkhn/Brain-Stroke-predection.git
+cd Brain-Stroke-predection
 
-F1 Score
+# Install dependencies
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
 
-Confusion Matrix
+# Launch the notebook
+jupyter notebook Brain_Stroke.ipynb
+```
 
-Results
+---
 
-Model Accuracy: ~95%
+## 💡 Key Takeaways
 
-Improved identification of high-risk individuals based on key health indicators
+- Age, hypertension, and average glucose level are the strongest predictors of stroke risk
+- Class imbalance is a critical challenge in medical classification — addressed through evaluation metric selection
+- Ensemble methods (Random Forest) outperformed simpler classifiers on this dataset
 
-Demonstrated strong predictive performance across validation datasets
+---
+
+## 👤 Author
+
+**Rachit Khandelwal**
+[GitHub](https://github.com/rachitkhn) · [LinkedIn](https://linkedin.com/in/rachitkhn)
+
+---
+
+*This project was developed as part of a data science portfolio focusing on real-world healthcare applications.*
